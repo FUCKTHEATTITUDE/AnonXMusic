@@ -1,4 +1,5 @@
 PING_COMMAND : ["ping", "alive"]
+CLONE_COMMAND : ["clone"]
 START_COMMAND : ["start", "mstart"]
 HELP_COMMAND : ["help"]
 SETTINGS_COMMAND : ["settings", "setting"]
