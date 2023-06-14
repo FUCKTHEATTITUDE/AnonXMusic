@@ -48,9 +48,9 @@ async def on_clone(self, message):
         except BaseException as e:
             await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @vionite to be fixed.")
 
-CLONE_COMMAND = ["clone"]
 
 
+CLONE_COMMAND = get_command("CLONE_COMMAND")
 @app.on_message(
     filters.command(get_command("CLONE_COMMAND"))
     & filters.private
