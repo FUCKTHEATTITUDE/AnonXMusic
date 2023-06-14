@@ -6,11 +6,9 @@ from pyrogram import *
 from pyrogram.types import *
 import random
 from random import choice
-import string
 from config import API_ID, API_HASH , MUSIC_BOT_NAME
 from pyrogram import Client
 from AnonX import app
-from pyrogram.types import BotCommand
 import config
 from strings import get_command
 from ..logging import LOGGER
