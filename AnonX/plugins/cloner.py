@@ -48,19 +48,23 @@ async def on_clone(self, message):
 
 
 @app.on_message(filters.private & filters.command("clone"))
-async def clone_com(client, message: Message):
-    chat_id = message.chat.id
-    text = await message.reply_text("/clone")
-    cmd = message.command
-    phone = message.command[1]
+async def clone(bot, msg: Message):
+    chat = msg.chat
+    text = await msg.reply("Usage:\n\n /clone token")
+    cmd = msg.command
+    phone = msg.command[1]
     try:
         await text.edit("Booting Your Client")
                    # change this Directry according to ur repo
-        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "YukkiMusic.plugins"})
+        client = Client(":memory:", API_ID, API_HASH, bot_token=phone,session_name=str(config.STRING1),plugins={"root": "AnonX.plugins"})
         await client.start()
-        user = await client.member.id()
-        await message.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant @{ASSUSERNAME} To Your Chat!\n\nThanks for Cloning.")
+        user = await client.get_me()
+        await msg.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant @PREMIUMMUSICPLAYER1 To Your Chat!\n\nThanks for Cloning.")
+        APP_USERNAME = user.username
+        await sys.send_message(APP_USERNAME, "/start")
     except Exception as e:
-        await message.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
+        await msg.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
 #End
 ##This code fit with every pyrogram Codes just import then @Client Xyz!
+
+
