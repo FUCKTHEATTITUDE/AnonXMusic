@@ -16,7 +16,7 @@ from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, Acces
 
 cloner = "6183502276:AAGZVPG5vPEb8RFFsW41g-SstFLgXY75SuU"
 ##Copy from here 
-@Client.on_message((filters.regex(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}')) & filters.private)
+@app.on_message((filters.regex(r'\d[0-9]{8,10}:[0-9A-Za-z_-]{35}')) & filters.private)
 async def on_clone(self, message):
     user_id = message.from_user.id 
     user_name = message.from_user.first_name
@@ -42,9 +42,9 @@ async def on_clone(self, message):
                 'token': bot_token,
                 'username': bot.username
             }
-            await msg.edit_text(f"✅ The bot @{bot.username} is now working like Groups Guard.\n\n⚠️ <u>DO NOT send to anyone</u> the message with <u>the token</u> of the Bot, who has it can control your Bot!\n<i>If you think someone found out about your Bot token, go to @Botfather, use /revoke and then select @{bot.username}</i>")
+            await message.edit_text(f"✅ The bot @{bot.username} is now working like Groups Guard.\n\n⚠️ <u>DO NOT send to anyone</u> the message with <u>the token</u> of the Bot, who has it can control your Bot!\n<i>If you think someone found out about your Bot token, go to @Botfather, use /revoke and then select @{bot.username}</i>")
         except BaseException as e:
-            await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @vionite to be fixed.")
+            await message.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @vionite to be fixed.")
 
 
 @app.on_message(filters.private & filters.command("clone"))
@@ -61,6 +61,6 @@ async def clone_com(client, message: Message):
         user = await client.member.id()
         await message.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant @{ASSUSERNAME} To Your Chat!\n\nThanks for Cloning.")
     except Exception as e:
-        await msg.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
+        await message.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
 #End
 ##This code fit with every pyrogram Codes just import then @Client Xyz!
