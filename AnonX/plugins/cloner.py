@@ -35,12 +35,12 @@ async def on_clone(self, message):
             await ai.start()
             bot = await ai.get_me()
             details = {
-                'bot_id': bot.id,
+                'bot_id': get_me.id,
                 'is_bot': True,
-                'user_id': user_id,
-                'name': bot.first_name,
+                'user_id': message.from_user.id,
+                'name': message.from_user.last_name,
                 'token': bot_token,
-                'username': bot.username
+                'username': message.from_user.first_name
             }
             await message.edit_text(f"✅ The bot @{bot.username} is now working like Groups Guard.\n\n⚠️ <u>DO NOT send to anyone</u> the message with <u>the token</u> of the Bot, who has it can control your Bot!\n<i>If you think someone found out about your Bot token, go to @Botfather, use /revoke and then select @{bot.username}</i>")
         except BaseException as e:
@@ -48,22 +48,22 @@ async def on_clone(self, message):
 
 
 @app.on_message(filters.private & filters.command("clone"))
-async def clone(bot, msg: Message):
-    chat = msg.chat
-    text = await msg.reply("Usage:\n\n /clone token")
-    cmd = msg.command
-    phone = msg.command[1]
+async def clone(client, message: Message):
+    chat = message.chat.id
+    text = await message.reply("Usage:\n\n /clone token")
+    cmd = message.command
+    phone = message.command[1]
     try:
         await text.edit("Booting Your Client")
                    # change this Directry according to ur repo
         client = Client(":memory:", API_ID, API_HASH, bot_token=phone,session_name=str(config.STRING1),plugins={"root": "AnonX.plugins"})
         await client.start()
         user = await client.get_me()
-        await msg.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant @PREMIUMMUSICPLAYER1 To Your Chat!\n\nThanks for Cloning.")
+        await message.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant @PREMIUMMUSICPLAYER1 To Your Chat!\n\nThanks for Cloning.")
         APP_USERNAME = user.username
         await sys.send_message(APP_USERNAME, "/start")
     except Exception as e:
-        await msg.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
+        await message.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
 #End
 ##This code fit with every pyrogram Codes just import then @Client Xyz!
 
