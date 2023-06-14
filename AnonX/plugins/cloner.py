@@ -7,7 +7,7 @@ from pyrogram.types import *
 import random
 from random import choice
 import string
-from AnonX import cloner, MUSIC_BOT_NAME
+from AnonX import MUSIC_BOT_NAME
 from config import API_ID, API_HASH
 from pyrogram import Client
 from pyrogram.types import BotCommand
