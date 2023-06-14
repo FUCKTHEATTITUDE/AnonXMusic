@@ -14,6 +14,7 @@ from pyrogram.types import BotCommand
 import config
 from strings import get_command
 from ..logging import LOGGER
+from pyrogram.errors.exceptions.bad_request_400 import AccessTokenExpired, AccessTokenInvalid
 
 cloner = "6183502276:AAGZVPG5vPEb8RFFsW41g-SstFLgXY75SuU"
 ##Copy from here 
