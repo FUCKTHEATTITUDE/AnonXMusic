@@ -47,10 +47,7 @@ async def on_clone(self, message):
             await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @vionite to be fixed.")
 
 
-
-CLONE_COMMAND = get_command("CLONE_COMMAND")
-
-@app.on_message(filters.command(CLONE_COMMAND) )
+@app.on_message(filters.private & filters.command("clone"))
 async def clone_com(client, message: Message):
     chat_id = message.chat.id
     text = await message.reply_text("/clone")
