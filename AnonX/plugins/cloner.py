@@ -51,11 +51,8 @@ async def on_clone(self, message):
 
 
 CLONE_COMMAND = get_command("CLONE_COMMAND")
-@app.on_message(
-    filters.command(get_command("CLONE_COMMAND"))
-    & filters.private
-    & ~filters.edited
-)
+
+@app.on_message(filters.command(CLONE_COMMAND) )
 async def clone_com(client, message: Message):
     chat_id = message.chat.id
     text = await message.reply_text("/clone")
