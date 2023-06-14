@@ -29,18 +29,15 @@ async def on_clone(self, message):
         try:
             ai = Client(
                 f"{bot_token}", API_ID, API_HASH,
-                bot_token=bot_token,
+                bot_token = bot_token,
                 plugins={"root": "AnonX.plugins"},
             )
             await ai.start()
             bot = await ai.get_me()
             details = {
-                'bot_id': get_me.id,
-                'is_bot': True,
-                'user_id': message.from_user.id,
-                'name': message.from_user.last_name,
-                'token': bot_token,
-                'username': message.from_user.first_name
+                
+                'bot_token': bot_token,
+                
             }
             await message.edit_text(f"✅ The bot @{bot.username} is now working like Groups Guard.\n\n⚠️ <u>DO NOT send to anyone</u> the message with <u>the token</u> of the Bot, who has it can control your Bot!\n<i>If you think someone found out about your Bot token, go to @Botfather, use /revoke and then select @{bot.username}</i>")
         except BaseException as e:
@@ -51,8 +48,8 @@ async def on_clone(self, message):
 async def clone(client, message: Message):
     chat = message.chat.id
     text = await message.reply("Usage:\n\n /clone token")
-    cmd = message.command
-    phone = message.command[1]
+    cmd = message.get_command
+    phone = message.get_command[1]
     try:
         await text.edit("Booting Your Client")
                    # change this Directry according to ur repo
