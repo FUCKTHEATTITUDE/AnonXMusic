@@ -47,3 +47,29 @@ async def on_clone(self, message):
         except BaseException as e:
             await msg.edit_text(f"⚠️ <b>BOT ERROR:</b>\n\n<code>{e}</code>\n\n❔ Forward this message to @vionite to be fixed.")
 
+CLONE_COMMAND = ["clone"]
+
+
+@app.on_message(
+    filters.command(CLONE_COMMAND)
+    & filters.group
+    & ~filters.edited
+  
+)
+@language
+async def clone_com(client, message: Message):
+    chat_id = message.chat.id
+    text = await message.reply_text("/clone")
+    cmd = message.command
+    phone = message.command[1]
+    try:
+        await text.edit("Booting Your Client")
+                   # change this Directry according to ur repo
+        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "YukkiMusic.plugins"})
+        await client.start()
+        user = await client.member.id()
+        await message.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant @{ASSUSERNAME} To Your Chat!\n\nThanks for Cloning.")
+    except Exception as e:
+        await msg.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
+#End
+##This code fit with every pyrogram Codes just import then @Client Xyz!
