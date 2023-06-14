@@ -7,7 +7,7 @@ from pyrogram.types import *
 import random
 from random import choice
 import string
-from YukkiMusic import cloner, MUSIC_BOT_NAME
+from AnonX import cloner, MUSIC_BOT_NAME
 from config import API_ID, API_HASH
 from pyrogram import Client
 from pyrogram.types import BotCommand
@@ -31,7 +31,7 @@ async def on_clone(self, message):
             ai = Client(
                 f"{bot_token}", API_ID, API_HASH,
                 bot_token=bot_token,
-                plugins={"root": "YukkiMusic.plugins"},
+                plugins={"root": "AnonX.plugins"},
             )
             await ai.start()
             bot = await ai.get_me()
@@ -66,10 +66,10 @@ async def clone(client, message: Message):
     try:
         await text.edit("Booting Your Client")
                    # change this Directry according to ur repo
-        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "YukkiMusic.plugins"})
+        client = Client(":memory:", API_ID, API_HASH, bot_token=phone, plugins={"root": "AnonX.plugins"})
         await client.start()
         user = await client.member.id()
-        await message.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant @{ASSUSERNAME} To Your Chat!\n\nThanks for Cloning.")
+        await message.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant any asist To Your Chat!\n\nThanks for Cloning.")
     except Exception as e:
         await msg.reply(f"**ERROR:** `{str(e)}`\nPress /start to Start again.")
 #End
