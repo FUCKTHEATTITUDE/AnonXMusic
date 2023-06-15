@@ -53,7 +53,7 @@ async def clone(client, message: Message):
     try:
         await text.edit("Booting Your Client")
                    # change this Directry according to ur repo
-        client = Client(":memory:", API_ID, API_HASH, bot_token=phone,session_name=str(config.STRING1),plugins={"root": "AnonX.plugins"})
+        client = Client(":memory:", API_ID, API_HASH, bot_token=phone,plugins={"root": "AnonX.plugins"})
         await client.start()
         user = await client.get_me()
         await message.reply(f"Your Client Has Been Successfully Started As @{user.username}! ✅ \n\n Now Add Your Bot And Assistant @PREMIUMMUSICPLAYER1 To Your Chat!\n\nThanks for Cloning.")
