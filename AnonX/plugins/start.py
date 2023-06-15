@@ -37,7 +37,7 @@ loop = asyncio.get_running_loop()
     & ~BANNED_USERS
 )
 @LanguageStart
-async def start_comm(client, message: Message, _):
+async def start_comm(client: Client, message: Message, _):
     await add_served_user(message.from_user.id)
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
